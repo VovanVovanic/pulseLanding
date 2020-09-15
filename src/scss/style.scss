@@ -1,0 +1,21 @@
+@import "base/variables";
+
+* {
+    font-family: "Museo Sans Cyrl", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ul,
+ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.container {
+    position: relative;
+    max-width: 940px;
+    margin: 0 auto;
+}
