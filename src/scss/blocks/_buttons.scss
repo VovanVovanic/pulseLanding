@@ -1,7 +1,7 @@
 .button {
     width: 150px;
     height: 30px;
-    background-color: #c70101;
+    background-color: $main-color;
     border-radius: 5px;
     font-size: 12px;
     line-height: 1.2;
@@ -18,4 +18,12 @@
         line-height: 1.2;
         font-weight: 500;
     }
+    &_order {
+        margin-top: 20px;
+        width: 300px;
+        height: 55px;
+        font-size: 16px;
+        line-height: 1.2;
+        font-weight: 500;
+}
 }
