@@ -1,0 +1,40 @@
+.slider {
+    padding: 108px 0;
+
+    &__content {
+        position: relative;
+        margin: 0 auto;
+        width: 750px;
+    }
+
+    &__control {
+        width: 31px;
+        height: 50px;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: -75px;
+
+        &_next {
+            left: auto;
+            right: -75px;
+        }
+
+    }
+}
+
+.tns-nav {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+
+    button {
+        width: 25px;
+        height: 25px;
+        margin-right: 20px;
+        border-radius: 100%;
+        position: relative;
+        background-color: rgba(234, 100, 123, 0.5);
+
+    }
+}
