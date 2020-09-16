@@ -11,6 +11,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.3/tiny-slider.css"
     />
+     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.min.css" />
   </head>
   <body>
@@ -809,18 +810,22 @@
     </div>
     </section>
     <footer class="footer">
-      <div class="map"></div>
+      <div class="map" id="my-map"></div>
       <div class="footer__content">
-        <address class="footer__address"></address>
-        <a href="" class="footer__phone"></a>
+        <address class="footer__address">Москва, Мясницкий проезд, д.3с1</address>
+        <a href="+84999228974" class="footer__phone">8 (499) 922-89-74</a>
         <ul class="footer__socials">
-          <li class="footer__icon"><a href="" class="footer__link"><img src="" alt="" class="footer__icon"></a></li>
-          <li class="footer__icon"><a href="" class="footer__link"><img src="" alt="" class="footer__icon"></a></li>
-          <li class="footer__icon"><a href="" class="footer__link"><img src="" alt="" class="footer__icon"></a></li>
+          <li class="footer__icon"><a href="" class="footer__link"><i class="fab fa-facebook-f"></i></a></li>
+          <li class="footer__icon"><a href="" class="footer__link"><i class="fab fa-instagram"></i></a></li>
+          <li class="footer__icon"><a href="" class="footer__link"><i class="fab fa-pinterest"></i></a></li>
         </ul>
       </div>
     </footer>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js">
+    </script>
+    <script defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAcMROjEGHf16iegsETXDBRHx3QScahSKg&callback=initMap">
+    </script>
     <script src="js/index.js"></script>
   </body>
 </html>

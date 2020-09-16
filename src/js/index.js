@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", () => {
   //slider
   const slider = tns({
@@ -68,6 +69,27 @@ document.addEventListener("DOMContentLoaded", () => {
     );
   };
   tabHandler();
+
+  //maps
+
+  function initMap() {
+    let daugavpils = { lat: 55.88366, lng: 26.530168 };
+    
+    const map = new google.maps.Map(document.getElementById("my-map"), {
+      zoom: 8,
+      center: daugavpils,
+     
+    });
+    map.setOptions({ draggableCursor: "crosshair" });
+
+    const marker = new google.maps.Marker({
+      position: daugavpils,
+      title: "I am here",
+      map: map,
+    });
+
+  }
+  initMap()
 });
 
 
