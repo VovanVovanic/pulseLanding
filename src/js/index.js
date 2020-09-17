@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", () => {
   //slider
   const slider = tns({
@@ -10,15 +9,17 @@ document.addEventListener("DOMContentLoaded", () => {
     navPosition: "bottom",
   });
 
-  document.querySelector(".slider__control_prev")
+  document
+    .querySelector(".slider__control_prev")
     .addEventListener("click", () => {
       slider.goTo("next");
     });
-  document.querySelector(".slider__control_next")
+  document
+    .querySelector(".slider__control_next")
     .addEventListener("click", () => {
       slider.goTo("prev");
     });
-  
+
   // tabs
 
   const tabHandler = () => {
@@ -26,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const tabs = document.querySelectorAll(".catalog__items");
     const linksBack = document.querySelectorAll(".catalog-item__back");
     const linksForward = document.querySelectorAll(".catalog-item__link");
-   
+
     tabNav.forEach((el, i) =>
       el.addEventListener("click", () => {
         tabNav.forEach((el) => el.classList.remove("catalog__tab_active"));
@@ -74,11 +75,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function initMap() {
     let daugavpils = { lat: 55.88366, lng: 26.530168 };
-    
+
     const map = new google.maps.Map(document.getElementById("my-map"), {
       zoom: 8,
       center: daugavpils,
-     
     });
     map.setOptions({ draggableCursor: "crosshair" });
 
@@ -87,11 +87,46 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "I am here",
       map: map,
     });
-
   }
-  initMap()
+  initMap();
+
+  //modals
+
+  const modals = () => {
+    const consultation = document.querySelectorAll('[data-modal="consultation"]');
+    const order = document.querySelector("#order");
+    const overlay = document.querySelector(".overlay");
+    const close = document.querySelectorAll(".modal__close");
+    const buy = document.querySelector("#buy");
+    const buyBtn = document.querySelectorAll(".button_buy");
+
+    const modalHandler = (arr, parent, modalWindow, cls) => {
+      arr.forEach((el) => {
+        el.addEventListener('click', () => {
+          if (arr == buyBtn) {
+            onTitleHandler(el)
+          }          
+          parent.style.display = 'block'
+          modalWindow.style.display = 'block'
+        })
+      })
+      cls.forEach((el) => {
+        el.addEventListener('click', () => {
+          parent.style.display = 'none';
+          modalWindow.style.display = 'none'
+        })
+      })
+      const onTitleHandler = (elem) => {
+        let newTitle = buy.querySelector('.modal__subtitle')
+        newTitle.textContent = elem.parentNode.parentNode.querySelector('.catalog-item__title').textContent
+        
+      }
+    }
+
+    modalHandler(consultation, overlay, order, close);
+    modalHandler(buyBtn, overlay, buy, close);
+
+  };
+  modals();
+
 });
-
-
-
-

@@ -31,7 +31,7 @@
           </div>
           <div class="header__contacts">
             <a href="+74999228974" class="header__phone">+7 (499) 922-89-74</a>
-            <button class="button">заказать звонок</button>
+            <button class="button" data-modal="consultation">заказать звонок</button>
           </div>
         </header>
         <div class="promo__content">
@@ -51,7 +51,7 @@
               <div class="promo__info">Ответим на все вопросы</div>
             </li>
           </ul>
-          <button class="button button_main">заказать кОНСУЛЬТАЦИЮ</button>
+          <button class="button button_main" data-modal="consultation">заказать кОНСУЛЬТАЦИЮ</button>
           <div class="promo__link">или <a href="#"> ПЕРЕЙТИ В КАТАЛОГ</a></div>
         </div>
       </div>
@@ -821,6 +821,66 @@
         </ul>
       </div>
     </footer>
+    <div class="overlay">
+      <div class="modal" id="order">
+        <div class="modal__close">&times;</div>
+        <h3 class="modal__title">Просто заполните форму заявки</h3>
+        <div class="h4 modal__subtitle">и мы перезвоним вам в течении 10 минут</div>
+          <form action="#" class="form form_mini">
+          <input
+            name="name"
+            type="text"
+            placeholder="Ваше имя"
+            class="form__input"
+          />
+          <input
+            name="phone"
+            placeholder="Ваш телефон"
+            type="phone"
+            class="form__input"
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Ваш E-mail"
+            class="form__input"
+          />
+          <button class="button button_order">заказать кОНСУЛЬТАЦИЮ</button>
+        </form>
+      </div>
+        <div class="modal" id="buy">
+        <div class="modal__close">&times;</div>
+        <h3 class="modal__title">Ваш заказ:</h3>
+        <div class="h4 modal__subtitle">Пульсометр Polar FT1</div>
+          <form action="#" class="form form_mini">
+          <input
+            name="name"
+            type="text"
+            placeholder="Ваше имя"
+            class="form__input"
+          />
+          <input
+            name="phone"
+            placeholder="Ваш телефон"
+            type="phone"
+            class="form__input"
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Ваш E-mail"
+            class="form__input"
+          />
+          <button class="button button_order">Купить</button>
+        </form>
+      </div>
+        <div class="modal modal_thanks" id="thanks">
+        <div class="modal__close">&times;</div>
+        <h3 class="modal__title">Спасибо за вашу заявку!</h3>
+        <div class="h4 modal__subtitle">Наш менеджер свяжется с вами 
+в ближайшее время!</div>
+      </div>
+    </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js">
     </script>
     <script defer
