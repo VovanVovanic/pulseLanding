@@ -14,11 +14,15 @@
         line-height: 66px;
         font-weight: 300;
         color: #4b4b4b;
-        &:nth-child(3){
+        &:last-child{
             margin-bottom: 0;
         }
     }
     &_mini {
         margin-top: 25px;
+    }
+    .js-validate-error-label {
+        margin-bottom: 20px;
+        text-align: center;
     }
 }

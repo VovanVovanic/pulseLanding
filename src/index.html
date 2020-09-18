@@ -110,18 +110,21 @@
             type="text"
             placeholder="Ваше имя"
             class="form__input"
+            data-validate-field="name"
           />
           <input
             name="phone"
             placeholder="Ваш телефон"
             type="phone"
             class="form__input"
+            data-validate-field="phone"
           />
           <input
             type="email"
             name="email"
             placeholder="Ваш E-mail"
             class="form__input"
+            data-validate-field="email"
           />
           <button class="button button_order">заказать кОНСУЛЬТАЦИЮ</button>
         </form>
@@ -826,24 +829,27 @@
         <div class="modal__close">&times;</div>
         <h3 class="modal__title">Просто заполните форму заявки</h3>
         <div class="h4 modal__subtitle">и мы перезвоним вам в течении 10 минут</div>
-          <form action="#" class="form form_mini">
+          <form action="#" class="form form_mini form_order">
           <input
             name="name"
             type="text"
             placeholder="Ваше имя"
             class="form__input"
+            data-validate-field="name"
           />
           <input
             name="phone"
             placeholder="Ваш телефон"
             type="phone"
             class="form__input"
+            data-validate-field="phone"
           />
           <input
             type="email"
             name="email"
             placeholder="Ваш E-mail"
             class="form__input"
+            data-validate-field="email"
           />
           <button class="button button_order">заказать кОНСУЛЬТАЦИЮ</button>
         </form>
@@ -852,24 +858,27 @@
         <div class="modal__close">&times;</div>
         <h3 class="modal__title">Ваш заказ:</h3>
         <div class="h4 modal__subtitle">Пульсометр Polar FT1</div>
-          <form action="#" class="form form_mini">
+          <form action="#" class="form form_mini form_buy">
           <input
             name="name"
             type="text"
             placeholder="Ваше имя"
             class="form__input"
+            data-validate-field="name"
           />
           <input
             name="phone"
             placeholder="Ваш телефон"
             type="phone"
             class="form__input"
+            data-validate-field="phone"
           />
           <input
             type="email"
             name="email"
             placeholder="Ваш E-mail"
             class="form__input"
+            data-validate-field="email"
           />
           <button class="button button_order">Купить</button>
         </form>
@@ -886,6 +895,8 @@
     <script defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAcMROjEGHf16iegsETXDBRHx3QScahSKg&callback=initMap">
     </script>
+    <script src="js/inputmask.min.js"></script>
+    <script src="js/just-validate.min.js"></script>
     <script src="js/index.js"></script>
   </body>
 </html>

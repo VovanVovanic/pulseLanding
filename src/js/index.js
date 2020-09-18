@@ -1,3 +1,5 @@
+
+
 document.addEventListener("DOMContentLoaded", () => {
   //slider
   const slider = tns({
@@ -93,7 +95,9 @@ document.addEventListener("DOMContentLoaded", () => {
   //modals
 
   const modals = () => {
-    const consultation = document.querySelectorAll('[data-modal="consultation"]');
+    const consultation = document.querySelectorAll(
+      '[data-modal="consultation"]'
+    );
     const order = document.querySelector("#order");
     const overlay = document.querySelector(".overlay");
     const close = document.querySelectorAll(".modal__close");
@@ -102,31 +106,94 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const modalHandler = (arr, parent, modalWindow, cls) => {
       arr.forEach((el) => {
-        el.addEventListener('click', () => {
+        el.addEventListener("click", () => {
           if (arr == buyBtn) {
-            onTitleHandler(el)
-          }          
-          parent.style.display = 'block'
-          modalWindow.style.display = 'block'
-        })
-      })
+            onTitleHandler(el);
+          }
+          parent.style.display = "block";
+          modalWindow.style.display = "block";
+        });
+      });
       cls.forEach((el) => {
-        el.addEventListener('click', () => {
-          parent.style.display = 'none';
-          modalWindow.style.display = 'none'
-        })
-      })
+        el.addEventListener("click", () => {
+          parent.style.display = "none";
+          modalWindow.style.display = "none";
+        });
+      });
       const onTitleHandler = (elem) => {
-        let newTitle = buy.querySelector('.modal__subtitle')
-        newTitle.textContent = elem.parentNode.parentNode.querySelector('.catalog-item__title').textContent
-        
-      }
-    }
+        let newTitle = buy.querySelector(".modal__subtitle");
+        newTitle.textContent = elem.parentNode.parentNode.querySelector(
+          ".catalog-item__title"
+        ).textContent;
+      };
+    };
 
     modalHandler(consultation, overlay, order, close);
     modalHandler(buyBtn, overlay, buy, close);
-
   };
   modals();
+
+  //input mask
+  let inputs = document.querySelectorAll("input[type='phone']");
+  let im = new Inputmask('+99-9999999');
+  im.mask(inputs);
+
+  //validate form
+
+  const onFormHandler = (
+    selector,
+    rules,
+    messages
+  ) => {
+    new window.JustValidate(selector, {
+      rules: rules,
+      messages: messages,
+      submitHandler: function (form, values, ajax) {
+        let formData = new FormData(form);
+        fetch("mail.php", {
+          method: "POST",
+          body: formData,
+        }).then(function (data) {
+          console.log(data);
+          form.reset();
+        });
+      },
+    });
+  };
+
+  onFormHandler(".form", {
+    name: { required: true },
+    email: { required: true, email: true },
+    phone: { required: true },
+  },
+    {
+      name: 'The name is required',
+      email: 'Email required',
+      phone: 'Phone number required'
+  }
+  );
+  onFormHandler(
+    ".form_order",
+    {
+      name: { required: true },
+      email: { required: true, email: true },
+      phone: { required: true },
+    },
+    {
+      name: "The name is required",
+      email: "Email required",
+      phone: "Phone number required",
+    }
+  );
+  onFormHandler(".form_buy", {
+    name: { required: true },
+    email: { required: true, email: true },
+    phone: { required: true },
+  },
+    {
+      name: 'The name is required',
+      email: 'Email required',
+      phone: 'Phone number required'
+  });
 
 });
