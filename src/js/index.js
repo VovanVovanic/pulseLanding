@@ -196,4 +196,17 @@ document.addEventListener("DOMContentLoaded", () => {
       phone: 'Phone number required'
   });
 
+  //scrollUp
+  window.addEventListener("scroll", () => {
+    const btnUp = document.querySelector(".icon-up");
+    const el = btnUp.getAttribute("href");
+    btnUp.style.display = pageYOffset > 650 ? "flex" : "none";
+    btnUp.addEventListener("click", (e) => {
+      e.preventDefault();
+      document.querySelector(el).scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    });
+  });
 });

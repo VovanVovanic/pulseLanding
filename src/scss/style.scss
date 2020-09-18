@@ -20,6 +20,22 @@ ol {
     max-width: 940px;
     margin: 0 auto;
 }
+.icon-up {
+width: 50px;
+height: 50px;
+position: fixed;
+bottom: 40px;
+right: 70px;
+display: none;
+justify-content: center;
+align-items: center;
+cursor: pointer;
+i {
+    font-size: 60px;
+    color: rgba(217, 30, 24, .7);
+    
+}
+}
 
 @import "blocks/promo";
 @import "blocks/header";
