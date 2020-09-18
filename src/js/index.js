@@ -1,5 +1,3 @@
-
-
 document.addEventListener("DOMContentLoaded", () => {
   //slider
   const slider = tns({
@@ -39,9 +37,22 @@ document.addEventListener("DOMContentLoaded", () => {
     );
     const onTabChange = (numb) => {
       tabs.forEach((el, indx) => {
-        numb === indx
-          ? el.classList.add("catalog__items_active")
-          : el.classList.remove("catalog__items_active");
+        if (numb === indx) {
+          el.classList.add("catalog__items_active");
+          el.querySelectorAll(".catalog-item").forEach((item, i) => {
+              item.classList.add("animate__animated","animate__fadeInRight","wow")
+            
+          });
+        } else {
+          el.classList.remove("catalog__items_active");
+          el.querySelectorAll(".catalog-item").forEach((item) => {
+            item.classList.remove(
+              "animate__animated",
+              "animate__fadeInRight",
+              "wow"
+            );
+          });
+        }
       });
     };
 
@@ -112,11 +123,20 @@ document.addEventListener("DOMContentLoaded", () => {
           }
           parent.style.display = "block";
           modalWindow.style.display = "block";
+          parent.classList.add("animate__zoomIn");
+          parent.addEventListener("animationend", () => {
+            parent.classList.remove("animate__zoomOut");
+            parent.style.display = "block";
+          });
         });
       });
       cls.forEach((el) => {
         el.addEventListener("click", () => {
-          parent.style.display = "none";
+          parent.classList.add("animate__zoomOut");
+          parent.addEventListener("animationend", () => {
+            parent.classList.remove("animate__zoomIn");
+            parent.style.display = "none";
+          });
           modalWindow.style.display = "none";
         });
       });
@@ -135,16 +155,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   //input mask
   let inputs = document.querySelectorAll("input[type='phone']");
-  let im = new Inputmask('+99-9999999');
+  let im = new Inputmask("+99-9999999");
   im.mask(inputs);
 
   //validate form
 
-  const onFormHandler = (
-    selector,
-    rules,
-    messages
-  ) => {
+  const onFormHandler = (selector, rules, messages) => {
     new window.JustValidate(selector, {
       rules: rules,
       messages: messages,
@@ -161,16 +177,18 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
-  onFormHandler(".form", {
-    name: { required: true },
-    email: { required: true, email: true },
-    phone: { required: true },
-  },
+  onFormHandler(
+    ".form",
     {
-      name: 'The name is required',
-      email: 'Email required',
-      phone: 'Phone number required'
-  }
+      name: { required: true },
+      email: { required: true, email: true },
+      phone: { required: true },
+    },
+    {
+      name: "The name is required",
+      email: "Email required",
+      phone: "Phone number required",
+    }
   );
   onFormHandler(
     ".form_order",
@@ -185,18 +203,22 @@ document.addEventListener("DOMContentLoaded", () => {
       phone: "Phone number required",
     }
   );
-  onFormHandler(".form_buy", {
-    name: { required: true },
-    email: { required: true, email: true },
-    phone: { required: true },
-  },
+  onFormHandler(
+    ".form_buy",
     {
-      name: 'The name is required',
-      email: 'Email required',
-      phone: 'Phone number required'
-  });
+      name: { required: true },
+      email: { required: true, email: true },
+      phone: { required: true },
+    },
+    {
+      name: "The name is required",
+      email: "Email required",
+      phone: "Phone number required",
+    }
+  );
 
   //scrollUp
+
   window.addEventListener("scroll", () => {
     const btnUp = document.querySelector(".icon-up");
     const el = btnUp.getAttribute("href");
@@ -209,4 +231,5 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   });
+  new WOW().init();
 });
