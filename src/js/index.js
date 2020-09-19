@@ -1,4 +1,17 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const thanks = document.querySelector("#thanks");
+  const error = document.querySelector("#error");
+  const tabNav = document.querySelectorAll(".catalog__tab");
+  const tabs = document.querySelectorAll(".catalog__items");
+  const linksBack = document.querySelectorAll(".catalog-item__back");
+  const linksForward = document.querySelectorAll(".catalog-item__link");
+  const consultation = document.querySelectorAll('[data-modal="consultation"]');
+  const order = document.querySelector("#order");
+  const overlay = document.querySelector(".overlay");
+  const close = document.querySelectorAll(".modal__close");
+  const buy = document.querySelector("#buy");
+  const buyBtn = document.querySelectorAll(".button_buy");
+
   //slider
   const slider = tns({
     container: ".my-slider",
@@ -7,6 +20,20 @@ document.addEventListener("DOMContentLoaded", () => {
     autoplay: false,
     controls: false,
     navPosition: "bottom",
+    mouseDrag: true,
+    responsive: {
+      576: {
+        edgePadding: -30,
+        gutter: 40,
+        items: 1,
+      },
+      768: {
+        gutter: 30,
+      },
+      992: {
+        items: 1,
+      },
+    },
   });
 
   document
@@ -23,11 +50,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // tabs
 
   const tabHandler = () => {
-    const tabNav = document.querySelectorAll(".catalog__tab");
-    const tabs = document.querySelectorAll(".catalog__items");
-    const linksBack = document.querySelectorAll(".catalog-item__back");
-    const linksForward = document.querySelectorAll(".catalog-item__link");
-
     tabNav.forEach((el, i) =>
       el.addEventListener("click", () => {
         tabNav.forEach((el) => el.classList.remove("catalog__tab_active"));
@@ -40,8 +62,11 @@ document.addEventListener("DOMContentLoaded", () => {
         if (numb === indx) {
           el.classList.add("catalog__items_active");
           el.querySelectorAll(".catalog-item").forEach((item, i) => {
-              item.classList.add("animate__animated","animate__fadeInRight","wow")
-            
+            item.classList.add(
+              "animate__animated",
+              "animate__fadeInRight",
+              "wow"
+            );
           });
         } else {
           el.classList.remove("catalog__items_active");
@@ -104,17 +129,11 @@ document.addEventListener("DOMContentLoaded", () => {
   initMap();
 
   //modals
-
+  onClearMessage = (msg, msg1) => {
+    msg.style.display = "none";
+    msg1.style.display = "none";
+  };
   const modals = () => {
-    const consultation = document.querySelectorAll(
-      '[data-modal="consultation"]'
-    );
-    const order = document.querySelector("#order");
-    const overlay = document.querySelector(".overlay");
-    const close = document.querySelectorAll(".modal__close");
-    const buy = document.querySelector("#buy");
-    const buyBtn = document.querySelectorAll(".button_buy");
-
     const modalHandler = (arr, parent, modalWindow, cls) => {
       arr.forEach((el) => {
         el.addEventListener("click", () => {
@@ -138,6 +157,7 @@ document.addEventListener("DOMContentLoaded", () => {
             parent.style.display = "none";
           });
           modalWindow.style.display = "none";
+          onClearMessage(error, thanks);
         });
       });
       const onTitleHandler = (elem) => {
@@ -154,7 +174,7 @@ document.addEventListener("DOMContentLoaded", () => {
   modals();
 
   //input mask
-  let inputs = document.querySelectorAll("input[type='phone']");
+  let inputs = document.querySelectorAll("input[type='tel']");
   let im = new Inputmask("+99-9999999");
   im.mask(inputs);
 
@@ -166,11 +186,24 @@ document.addEventListener("DOMContentLoaded", () => {
       messages: messages,
       submitHandler: function (form, values, ajax) {
         let formData = new FormData(form);
-        fetch("mail.php", {
+        fetch("mailer/smart.php", {
           method: "POST",
           body: formData,
         }).then(function (data) {
-          console.log(data);
+          overlay.style.display = "block";
+          order.style.display = 'none'
+          buy.style.display = "none";
+          thanks.style.display = "none";
+          if (data.ok) {
+            thanks.style.display = "block";
+            error.style.display = "none";
+            thanks.classList.add("animate__animated", "animate__fadeIn");
+          } else {
+            error.style.display = "flex";
+            thanks.style.display = "none";
+            error.classList.add("animate__animated", "animate__fadeIn");
+            error.lastChild.textContent = `Something is gone wrong. Error ${data.status}`;
+          }
           form.reset();
         });
       },
@@ -217,8 +250,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   );
 
-  //scrollUp
-
+  //scrollUp/down
   window.addEventListener("scroll", () => {
     const btnUp = document.querySelector(".icon-up");
     const el = btnUp.getAttribute("href");
@@ -227,9 +259,21 @@ document.addEventListener("DOMContentLoaded", () => {
       e.preventDefault();
       document.querySelector(el).scrollIntoView({
         behavior: "smooth",
-        block: "start",
+        block: 'start',
       });
     });
   });
+  const onScrollDown = () => {
+    const btnDown = document.querySelector(".promo__link").firstElementChild;
+    const elem = btnDown.getAttribute("href");
+    btnDown.addEventListener("click", (e) => {
+      e.preventDefault()
+            document.querySelector(elem).scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+    })
+  }
+  onScrollDown()
   new WOW().init();
 });

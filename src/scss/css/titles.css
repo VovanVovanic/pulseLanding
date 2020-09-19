@@ -1,0 +1,17 @@
+.title {
+  font-size: 30px;
+  line-height: 1.2;
+  font-weight: 700;
+  color: #0d0d0d;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.title_consult {
+  font-size: 36px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-align: left;
+}
+/*# sourceMappingURL=titles.css.map */

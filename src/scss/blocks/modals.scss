@@ -49,7 +49,15 @@
     &_thanks {
         min-height: 140px;
     }
+    &_error {
+        color: 'tomato';
+        justify-content: center;
+        align-items: center;
+        font-size: 30px;
+        text-align: center;
+        min-height: 100px;
+    }
 } 
-#order, #buy, #thanks {
+#order, #buy, #thanks, #error {
     display: none;
 }
