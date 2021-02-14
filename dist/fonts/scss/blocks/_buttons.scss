@@ -1,0 +1,36 @@
+.button {
+    width: 150px;
+    height: 30px;
+    background-color: $main-color;
+    border-radius: 5px;
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+
+    &_main {
+        margin-top: 67px;
+        width: 300px;
+        height: 50px;
+        font-size: 16px;
+        line-height: 1.2;
+        font-weight: 500;
+    }
+
+    &_order {
+        margin-top: 20px;
+        width: 300px;
+        height: 55px;
+        font-size: 16px;
+        line-height: 1.2;
+        font-weight: 500;
+    }
+    &_buy{
+        width: 131px;
+        height: 40px;
+        font-size: 14px;
+    }
+}

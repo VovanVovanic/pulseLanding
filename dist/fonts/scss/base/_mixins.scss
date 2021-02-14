@@ -1,0 +1,8 @@
+@mixin link-decor {
+    transition: .5s all;
+
+    &:hover {
+        text-decoration: underline;
+        color: rgba(0, 0, 255, .8)
+    }
+}
